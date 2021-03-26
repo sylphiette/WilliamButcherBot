@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import os
 from PIL import Image
 import math
+=======
+from PIL import Image
+>>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
 
 from pyrogram import Client, raw
 from pyrogram.file_id import FileId
@@ -8,7 +12,11 @@ from pyrogram.file_id import FileId
 STICKER_DIMENSIONS = (512, 512)
 
 
+<<<<<<< HEAD
 async def resize_file_to_sticker_size(file_path: str) -> str:
+=======
+async def resize_file_to_sticker_size(file_path: str):
+>>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
     im = Image.open(file_path)
     if (im.width, im.height) < STICKER_DIMENSIONS:
         size1 = im.width
@@ -27,6 +35,7 @@ async def resize_file_to_sticker_size(file_path: str) -> str:
         im = im.resize(sizenew)
     else:
         im.thumbnail(STICKER_DIMENSIONS)
+<<<<<<< HEAD
     try:
         os.remove(file_path)
         file_path = f"{file_path}.png"
@@ -57,3 +66,21 @@ async def upload_document(client: Client, file_path: str, chat_id: int) -> raw.b
 async def get_document_from_file_id(file_id: str) -> raw.base.InputDocument:
     decoded = FileId.decode(file_id)
     return raw.types.InputDocument(id=decoded.media_id, access_hash=decoded.access_hash, file_reference=decoded.file_reference)
+=======
+    im.save(file_path, "PNG")
+
+async def upload_document(client: Client, file_path: str) -> raw.base.InputDocument:
+    media = await client.send(
+        raw.functions.messages.UploadMedia(
+            peer=raw.types.InputPeerEmpty(),
+            media=raw.types.InputMediaUploadedPhoto(
+                file=file_path
+            )
+        )
+    )
+    return raw.types.InputDocument(id=media.photo.id, access_hash=media.access_hash, file_reference=media.photo.file_reference)
+
+async def get_document_from_file_id(file_id: str) -> raw.base.InputDocument:
+    decoded = FileId.decode(file_id)
+    return raw.types.InputDocument(id=decoded.media_id, access_hash=decoded.access_hash, file_reference=decoded.file_reference)
+>>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
