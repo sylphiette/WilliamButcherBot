@@ -2,9 +2,12 @@
 import os
 from PIL import Image
 import math
+<<<<<<< HEAD
 =======
 from PIL import Image
 >>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
+=======
+>>>>>>> 1c982b5 (Small fixes to the kang module)
 
 from pyrogram import Client, raw
 from pyrogram.file_id import FileId

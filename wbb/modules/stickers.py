@@ -1,7 +1,10 @@
 import os
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import math
+=======
+>>>>>>> 1c982b5 (Small fixes to the kang module)
 import uuid
 >>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
 import imghdr
@@ -13,6 +16,7 @@ from wbb.utils.files import resize_file_to_sticker_size, upload_document, get_do
 <<<<<<< HEAD
 <<<<<<< HEAD
 from wbb.utils.stickerset import get_sticker_set_by_name, create_sticker, add_sticker_to_set, create_sticker_set
+<<<<<<< HEAD
 =======
 from wbb.utils.stickerset import get_sticker_set_by_name
 =======
@@ -20,6 +24,8 @@ from wbb.utils.stickerset import get_sticker_set_by_name, create_sticker, add_st
 >>>>>>> 872cbac (small fixes to the kang module)
 from random import randint
 >>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
+=======
+>>>>>>> 1c982b5 (Small fixes to the kang module)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
 
@@ -152,7 +158,7 @@ async def kang(client, message):
                 str(message.from_user.id) + "_by_"+BOT_USERNAME
             continue
         else:
-            add_sticker_to_set(client, stickerset, sticker)
+            await add_sticker_to_set(client, stickerset, sticker)
         break
 
     await msg.edit("Sticker Kanged To [Pack](t.me/addstickers/{})\nEmoji: {}".format(packname, sticker_emoji))

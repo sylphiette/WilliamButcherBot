@@ -58,8 +58,12 @@ async def add_sticker_to_set(client: Client, stickerset: raw.base.messages.Stick
 >>>>>>> 872cbac (small fixes to the kang module)
     return await client.send(
         raw.functions.stickers.AddStickerToSet(
+<<<<<<< HEAD
             stickerset=stickerset,
 >>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
+=======
+            stickerset=raw.types.InputStickerSetShortName(short_name=stickerset.set.short_name),
+>>>>>>> 1c982b5 (Small fixes to the kang module)
             sticker=sticker
         )
     )
