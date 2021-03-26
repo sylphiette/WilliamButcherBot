@@ -1,12 +1,15 @@
 import os
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import math
 =======
 >>>>>>> 1c982b5 (Small fixes to the kang module)
 import uuid
 >>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
+=======
+>>>>>>> b5cdbb1 (More fixes in the kang module)
 import imghdr
 from wbb.utils.botinfo import BOT_USERNAME
 from wbb import app
@@ -75,6 +78,7 @@ async def kang(client, message):
     # Get the corresponding fileid, resize the file if necessary
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     doc = (message.reply_to_message.photo or message.reply_to_message.document)
     if message.reply_to_message.sticker:
         sticker = await create_sticker(await get_document_from_file_id(message.reply_to_message.sticker.file_id), sticker_emoji)
@@ -125,10 +129,13 @@ async def kang(client, message):
 =======
     file_id = (message.reply_to_message.photo or message.reply_to_message.document)
 >>>>>>> 872cbac (small fixes to the kang module)
+=======
+    doc = (message.reply_to_message.photo or message.reply_to_message.document)
+>>>>>>> b5cdbb1 (More fixes in the kang module)
     if message.reply_to_message.sticker:
         sticker = await create_sticker(await get_document_from_file_id(message.reply_to_message.sticker.file_id), sticker_emoji)
-    elif file_id:
-        temp_file_path = await app.download_media(file_id, file_name=str(uuid.uuid4()))
+    elif doc:
+        temp_file_path = await app.download_media(doc)
         if imghdr.what(temp_file_path) not in SUPPORTED_TYPES:
             await msg.edit("Format not supported! ({})".format(image_type))
             return
@@ -138,7 +145,7 @@ async def kang(client, message):
             await msg.edit_text("Something wrong happened.")
             raise Exception(f"Something went wrong while resizing the sticker (at {temp_file_path}); {e}")
             return False
-        sticker =  await create_sticker(await upload_document(client, temp_file_path), sticker_emoji)
+        sticker =  await create_sticker(await upload_document(client, temp_file_path, message.chat.id), sticker_emoji)
         if os.path.isfile(temp_file_path):
             os.remove(temp_file_path)
     else:
