@@ -44,6 +44,7 @@ async def create_sticker_set(client: Client, owner: int, title: str, short_name:
     )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 async def add_sticker_to_set(client: Client, stickerset: raw.base.messages.StickerSet, sticker: raw.base.InputStickerSetItem) -> raw.base.messages.StickerSet:
     return await client.send(
@@ -52,6 +53,9 @@ async def add_sticker_to_set(client: Client, stickerset: raw.base.messages.Stick
                 short_name=stickerset.set.short_name),
 =======
 async def add_sticker_to_set(client: Client, stickerset: aw.base.messages.StickerSet, sticker: raw.base.InputStickerSetItem) -> raw.base.messages.StickerSet:
+=======
+async def add_sticker_to_set(client: Client, stickerset: raw.base.messages.StickerSet, sticker: raw.base.InputStickerSetItem) -> raw.base.messages.StickerSet:
+>>>>>>> 872cbac (small fixes to the kang module)
     return await client.send(
         raw.functions.stickers.AddStickerToSet(
             stickerset=stickerset,
