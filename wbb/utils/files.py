@@ -19,10 +19,14 @@ STICKER_DIMENSIONS = (512, 512)
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 async def resize_file_to_sticker_size(file_path: str) -> str:
 =======
 async def resize_file_to_sticker_size(file_path: str):
 >>>>>>> d17dba5 (Rewrite of the kang (stickers) module.)
+=======
+async def resize_file_to_sticker_size(file_path: str) -> str:
+>>>>>>> a413f94 (Small fix regarding file formats in the kang module)
     im = Image.open(file_path)
     if (im.width, im.height) < STICKER_DIMENSIONS:
         size1 = im.width
@@ -42,12 +46,16 @@ async def resize_file_to_sticker_size(file_path: str):
     else:
         im.thumbnail(STICKER_DIMENSIONS)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a413f94 (Small fix regarding file formats in the kang module)
     try:
         os.remove(file_path)
         file_path = f"{file_path}.png"
         return file_path
     finally:
         im.save(file_path)
+<<<<<<< HEAD
 
 
 async def upload_document(client: Client, file_path: str, chat_id: int) -> raw.base.InputDocument:
@@ -74,6 +82,8 @@ async def get_document_from_file_id(file_id: str) -> raw.base.InputDocument:
     return raw.types.InputDocument(id=decoded.media_id, access_hash=decoded.access_hash, file_reference=decoded.file_reference)
 =======
     im.save(file_path, "PNG")
+=======
+>>>>>>> a413f94 (Small fix regarding file formats in the kang module)
 
 async def upload_document(client: Client, file_path: str, chat_id: int) -> raw.base.InputDocument:
     media = await client.send(
